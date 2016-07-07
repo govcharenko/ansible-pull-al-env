@@ -27,7 +27,7 @@
       file: path=/home/vagrant/.config/fish/completions state=directory owner=vagrant group=vagrant mode=664
 
     - name: Install Docker completions file
-      command: wget https://raw.github.com/barnybug/docker-fish-completion/master/docker.fish -O /home/vagrant/.config/fish/completions/docker.fish
+      get_url: url=https://raw.github.com/barnybug/docker-fish-completion/master/docker.fish dest=/home/vagrant/.config/fish/completions/docker.fish mode=664
 
 - name: Add Docker restart script
   hosts: Ubuntu
