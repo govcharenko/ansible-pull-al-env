@@ -24,10 +24,10 @@
       user: name=vagrant shell=/usr/bin/fish
 
     - name: Create directory for completions
-      file: path=/hove/vagrant/.config/fish/completions state=directory owner=vagrant group=vagrant mode=664
+      file: path=/home/vagrant/.config/fish/completions state=directory owner=vagrant group=vagrant mode=664
 
     - name: Install Docker completions file
-      command: wget https://raw.github.com/barnybug/docker-fish-completion/master/docker.fish -O /hove/vagrant/.config/fish/completions/docker.fish
+      command: wget https://raw.github.com/barnybug/docker-fish-completion/master/docker.fish -O /home/vagrant/.config/fish/completions/docker.fish
 
 - name: Add Docker restart script
   hosts: Ubuntu
@@ -40,6 +40,8 @@
   hosts: Ubuntu
   become: True
   tasks:
+    - name: Create directory for completions
+      file: path=/home/vagrant/.config/xfce4 state=directory owner=vagrant group=vagrant mode=775
     - name: Copy predefined terminal settings
       copy: src=files/terminalrc dest=/home/vagrant/.config/xfce4/terminal/terminalrc owner=vagrant mode=666
 
