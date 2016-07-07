@@ -1,0 +1,2 @@
+#!/bin/bash
+docker ps --format "{{.ID}}\t{{.Names}}" | grep -v 'mongo' | awk '{print $1}' | xargs docker restart

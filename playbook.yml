@@ -1,0 +1,27 @@
+#!/usr/bin/env ansible-playbook
+
+- name: Gather prerequisites
+  hosts: all
+  gather_facts: True
+  tasks:
+    - name: create groups based on distribution
+      group_by: key={{ ansible_distribution }}
+
+- name: Install and configure Fish Shell
+  hosts: Ubuntu
+  become: True
+  tasks:
+    - name: Install Fish
+      apt: name=fish state=latest update_cache=true cache_valid_time=600
+    - name: Add Fish predefined config
+      copy: src=files/config.fish dest=~/.config/fish/config.fish owner=vagrant group=vagrant mode=664
+    - name: Change default shell
+      command: chsh -s /usr/local/bin/fish
+
+- name: Add Docker restart script
+  hosts: Ubuntu
+  become: True
+  tasks:
+    - name: Copy script
+      copy: name=files/restart-without-mongo dest=/usr/local/bin/restart-without-mongo owner=vagrant mode=755
+
