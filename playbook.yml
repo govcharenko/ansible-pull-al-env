@@ -13,12 +13,19 @@
   tasks:
     - name: Install Fish
       apt: name=fish state=latest update_cache=true cache_valid_time=600
+
+    - name: Create directory for fish
+      file: path=/hove/vagrant/.config/fish state=directory
+
     - name: Add Fish predefined config
       copy: src=files/config.fish dest=/home/vagrant/.config/fish/config.fish owner=vagrant group=vagrant mode=664
+
     - name: Change default shell
       user: name=vagrant shell=/usr/local/bin/fish
+
     - name: Create directory for completions
       file: path=/hove/vagrant/.config/fish/completions state=directory
+
     - name: Install Docker completions file
       command: wget https://raw.github.com/barnybug/docker-fish-completion/master/docker.fish -O /hove/vagrant/.config/fish/completions/docker.fish
 
