@@ -15,7 +15,7 @@
       apt: name=fish state=latest update_cache=true cache_valid_time=600
 
     - name: Create directory for fish
-      file: path=/hove/vagrant/.config/fish state=directory
+      file: path=/home/vagrant/.config/fish state=directory
 
     - name: Add Fish predefined config
       copy: src=files/config.fish dest=/home/vagrant/.config/fish/config.fish owner=vagrant group=vagrant mode=664
