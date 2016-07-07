@@ -23,5 +23,5 @@
   become: True
   tasks:
     - name: Copy script
-      copy: name=files/restart-without-mongo dest=/usr/local/bin/restart-without-mongo owner=vagrant mode=755
+      copy: src=files/restart-without-mongo dest=/usr/local/bin/restart-without-mongo owner=vagrant mode=755
 
