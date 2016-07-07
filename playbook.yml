@@ -14,7 +14,7 @@
     - name: Install Fish
       apt: name=fish state=latest update_cache=true cache_valid_time=600
     - name: Add Fish predefined config
-      copy: src=files/config.fish dest=~/.config/fish/config.fish owner=vagrant group=vagrant mode=664
+      copy: src=files/config.fish dest=/home/vagrant/.config/fish/config.fish owner=vagrant group=vagrant mode=664
     - name: Change default shell
       command: chsh -s /usr/local/bin/fish
 
