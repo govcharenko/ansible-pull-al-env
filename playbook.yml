@@ -36,3 +36,16 @@
     - name: Copy script
       copy: src=files/restart-without-mongo dest=/usr/local/bin/restart-without-mongo owner=vagrant mode=755
 
+- name: Update XFCE Terminal default settings
+  hosts: Ubuntu
+  become: True
+  tasks:
+    - name: Copy predefined terminal settings
+      copy: src=files/terminalrc dest=/home/vagrant/.config/xfce4/terminal/terminalrc owner=vagrant mode=666
+
+ name: Install and configure Vim
+  hosts: Ubuntu
+  become: True
+  tasks:
+    - name: Install Vim
+      apt: name=vim state=latest update_cache=true cache_valid_time=600
