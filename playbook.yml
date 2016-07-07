@@ -21,7 +21,7 @@
       copy: src=files/config.fish dest=/home/vagrant/.config/fish/config.fish owner=vagrant group=vagrant mode=664
 
     - name: Change default shell
-      user: name=vagrant shell=/usr/local/bin/fish
+      user: name=vagrant shell=/usr/bin/fish
 
     - name: Create directory for completions
       file: path=/hove/vagrant/.config/fish/completions state=directory owner=vagrant group=vagrant mode=664
