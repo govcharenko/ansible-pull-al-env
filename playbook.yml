@@ -40,8 +40,8 @@
   hosts: Ubuntu
   become: True
   tasks:
-    - name: Create directory for completions
-      file: path=/home/vagrant/.config/xfce4 state=directory owner=vagrant group=vagrant mode=775
+    - name: Create directory for Terminal settings
+      file: path=/home/vagrant/.config/xfce4/terminal state=directory owner=vagrant group=vagrant mode=775
     - name: Copy predefined terminal settings
       copy: src=files/terminalrc dest=/home/vagrant/.config/xfce4/terminal/terminalrc owner=vagrant mode=666
 
