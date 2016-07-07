@@ -43,7 +43,7 @@
     - name: Copy predefined terminal settings
       copy: src=files/terminalrc dest=/home/vagrant/.config/xfce4/terminal/terminalrc owner=vagrant mode=666
 
- name: Install and configure Vim
+- name: Install and configure Vim
   hosts: Ubuntu
   become: True
   tasks:

@@ -17,7 +17,13 @@ This project is intended to be invoked by the JVM Development Environment projec
 ##Installed Software
 
 * [Fish Shell](https://github.com/fish-shell/fish-shell)
-* Docker restart script
+* [Vim](http://www.vim.org/)
+* Docker restart script for AL
+
+##Tweaks
+
+* Updates XFCE terminal with another color scheme and larger font size
+
 
 #Troubleshooting
 
