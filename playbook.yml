@@ -16,7 +16,7 @@
     - name: Add Fish predefined config
       copy: src=files/config.fish dest=/home/vagrant/.config/fish/config.fish owner=vagrant group=vagrant mode=664
     - name: Change default shell
-      command: chsh -s /usr/local/bin/fish
+      user: name=vagrant shell=/usr/local/bin/fish
 
 - name: Add Docker restart script
   hosts: Ubuntu
