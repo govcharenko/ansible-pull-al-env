@@ -42,6 +42,7 @@
   tasks:
     - name: Create directory for Terminal settings
       file: path=/home/vagrant/.config/xfce4/terminal state=directory owner=vagrant group=vagrant mode=775
+
     - name: Copy predefined terminal settings
       copy: src=files/terminalrc dest=/home/vagrant/.config/xfce4/terminal/terminalrc owner=vagrant mode=666
 
@@ -51,3 +52,20 @@
   tasks:
     - name: Install Vim
       apt: name=vim state=latest update_cache=true cache_valid_time=600
+
+- name: Set up CORS proxy
+  hosts: Ubuntu
+  become: True
+  tasks:
+    - name: Install Docker Py
+      pip: name=docker-py
+
+    - name: Run CORS proxy container
+      docker_container:
+        name: al-cors-proxy
+        image: registry.transparent.com/al-cors-proxy
+        restart_policy: always
+        ports:
+          - "5555:80"
+        env:
+          PROXY_TO: 10.0.2.15:8055
