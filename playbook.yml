@@ -64,6 +64,7 @@
       docker_container:
         name: al-cors-proxy
         image: registry.transparent.com/al-cors-proxy
+        pull: true
         restart_policy: always
         ports:
           - "5555:80"
