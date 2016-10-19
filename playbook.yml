@@ -53,20 +53,3 @@
     - name: Install Vim
       apt: name=vim state=latest update_cache=true cache_valid_time=600
 
-- name: Set up CORS proxy
-  hosts: Ubuntu
-  become: True
-  tasks:
-    - name: Install Docker Py
-      pip: name=docker-py
-
-    - name: Run CORS proxy container
-      docker_container:
-        name: al-cors-proxy
-        image: registry.transparent.com/al-cors-proxy
-        pull: true
-        restart_policy: always
-        ports:
-          - "5555:80"
-        env:
-          PROXY_TO: 10.0.2.15:8055
