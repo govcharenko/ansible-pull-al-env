@@ -8,7 +8,7 @@
       group_by: key={{ ansible_distribution }}
 
 - name: Install and configure Fish Shell
-  hosts: Ubuntu
+  hosts: all
   become: True
   tasks:
     - name: Install Fish
@@ -30,14 +30,14 @@
       get_url: url=https://raw.github.com/barnybug/docker-fish-completion/master/docker.fish dest=/home/vagrant/.config/fish/completions/docker.fish mode=664
 
 - name: Add Docker restart script
-  hosts: Ubuntu
+  hosts: all
   become: True
   tasks:
     - name: Copy script
       copy: src=files/restart-without-mongo dest=/usr/local/bin/restart-without-mongo owner=vagrant mode=755
 
 - name: Update XFCE Terminal default settings
-  hosts: Ubuntu
+  hosts: all
   become: True
   tasks:
     - name: Create directory for Terminal settings
@@ -47,7 +47,7 @@
       copy: src=files/terminalrc dest=/home/vagrant/.config/xfce4/terminal/terminalrc owner=vagrant mode=666
 
 - name: Install and configure Vim
-  hosts: Ubuntu
+  hosts: all
   become: True
   tasks:
     - name: Install Vim
