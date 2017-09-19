@@ -29,12 +29,14 @@
     - name: Install Docker completions file
       get_url: url=https://raw.github.com/barnybug/docker-fish-completion/master/docker.fish dest=/home/vagrant/.config/fish/completions/docker.fish mode=664
 
-- name: Add Docker restart script
+- name: Add useful scripts
   hosts: all
   become: True
   tasks:
-    - name: Copy script
+    - name: Copy docker restart script
       copy: src=files/restart-without-mongo dest=/usr/local/bin/restart-without-mongo owner=vagrant mode=755
+    - name: Copy registry login script
+      copy: src=files/login-to-registry dest=/usr/local/bin/login-to-registry owner=vagrant mode=755
 
 - name: Update XFCE Terminal default settings
   hosts: all
