@@ -1,2 +1,3 @@
 #!/bin/bash
-aws ecr get-login | source & aws ecr get-login | sudo su
+$(aws ecr get-login)
+aws ecr get-login | sudo su
