@@ -1,14 +1,14 @@
 #!/usr/bin/env ansible-playbook
 
 - name: Gather prerequisites
-  hosts: all
+  hosts: localhost
   gather_facts: True
   tasks:
     - name: create groups based on distribution
       group_by: key={{ ansible_distribution }}
 
 - name: Install and configure Fish Shell
-  hosts: all
+  hosts: localhost
   become: True
   tasks:
     - name: Install Fish
@@ -30,7 +30,7 @@
       get_url: url=https://raw.github.com/barnybug/docker-fish-completion/master/docker.fish dest=/home/vagrant/.config/fish/completions/docker.fish mode=664
 
 - name: Add useful scripts
-  hosts: all
+  hosts: localhost
   become: True
   tasks:
     - name: Copy docker restart script
@@ -39,7 +39,7 @@
       copy: src=files/login-to-registry dest=/usr/local/bin/login-to-registry owner=vagrant mode=755
 
 - name: Update XFCE Terminal default settings
-  hosts: all
+  hosts: localhost
   become: True
   tasks:
     - name: Create directory for Terminal settings
@@ -49,7 +49,7 @@
       copy: src=files/terminalrc dest=/home/vagrant/.config/xfce4/terminal/terminalrc owner=vagrant mode=666
 
 - name: Install and configure Vim
-  hosts: all
+  hosts: localhost
   become: True
   tasks:
     - name: Install Vim
